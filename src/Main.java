@@ -3,6 +3,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -15,8 +16,9 @@ public class Main extends Application {
 
         primaryStage.setOnCloseRequest(event -> controller.shutdown());
 
+        primaryStage.getIcons().add(new Image("Cell/logo.png"));
         primaryStage.setTitle("Game Of Life");
-        primaryStage.setScene(new Scene(root, 800, 630));
+        primaryStage.setScene(new Scene(root));
         primaryStage.setResizable(false);
         primaryStage.show();
     }

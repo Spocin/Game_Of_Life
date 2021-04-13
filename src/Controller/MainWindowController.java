@@ -28,7 +28,7 @@ public class MainWindowController {
     public void initialize() {
         this.executor = Executors.newFixedThreadPool(1);
 
-        fillPane(38,25);
+        fillPane(37,25);
 
         setupStartButton();
         setupStopButton();
@@ -196,7 +196,7 @@ public class MainWindowController {
             setupState();
 
             try {
-                Thread.sleep(1000);
+                Thread.sleep(500);
             } catch (InterruptedException e) {
                 working = false;
             }
