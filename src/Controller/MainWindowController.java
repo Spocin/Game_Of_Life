@@ -14,7 +14,7 @@ public class MainWindowController {
     FlowPane flowPane;
 
     @FXML
-    Button startButton, stopButton;
+    Button startButton, stopButton, clearButton;
 
     int width;
     int height;
@@ -25,7 +25,6 @@ public class MainWindowController {
     ExecutorService executor;
 
 
-
     public void initialize() {
         this.executor = Executors.newFixedThreadPool(1);
 
@@ -33,7 +32,9 @@ public class MainWindowController {
 
         setupStartButton();
         setupStopButton();
+        setupClearButton();
     }
+
 
     private void fillPane (int width, int height) {
 
@@ -60,6 +61,7 @@ public class MainWindowController {
 
             startButton.setDisable(true);
             stopButton.setDisable(false);
+            clearButton.setDisable(true);
 
             working = true;
             executor.submit(task);
@@ -74,10 +76,25 @@ public class MainWindowController {
 
             stopButton.setDisable(true);
             startButton.setDisable(false);
+            clearButton.setDisable(false);
 
             working = false;
         });
     }
+
+    public void setupClearButton() {
+
+        clearButton.setDisable(false);
+
+        clearButton.setOnAction(event -> {
+            for (int i = 0; i < height; i++) {
+                for (int j = 0; j < width; j++) {
+                    buttonsArray[i][j].setDeactivated();
+                }
+            }
+        });
+    }
+
 
     private void setupState() {
 
@@ -168,6 +185,7 @@ public class MainWindowController {
             return count == 3;
         }
     }
+
 
     public void shutdown() {
         executor.shutdownNow();
