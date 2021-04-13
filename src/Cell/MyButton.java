@@ -6,16 +6,19 @@ public class MyButton extends javafx.scene.control.Button {
 
     private boolean activated;
 
+    private final String offStyle = "-fx-background-color: #e3e3e3";
+    private final String onStyle = "-fx-background-color: #737373";
+
     public MyButton () {
         this.activated = false;
-        setStyle("-fx-background-color: #ffff");
+        setStyle(offStyle);
 
         setOnAction(event -> {
             if (activated) {
-                setStyle("-fx-background-color: #ffff");
+                setStyle(offStyle);
                 this.activated = false;
             } else {
-                setStyle("-fx-background-color: #586161");
+                setStyle(onStyle);
                 this.activated = true;
             }
         });
@@ -28,14 +31,14 @@ public class MyButton extends javafx.scene.control.Button {
     public void setActivated() {
         Platform.runLater(() -> {
             this.activated = true;
-            setStyle("-fx-background-color: #586161");
+            setStyle(onStyle);
         });
     }
 
     public void setDeactivated() {
         Platform.runLater(() -> {
             this.activated = false;
-            setStyle("-fx-background-color: #ffff");
+            setStyle(offStyle);
         });
     }
 }
