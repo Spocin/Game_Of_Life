@@ -1,5 +1,7 @@
 package Cell;
 
+import javafx.application.Platform;
+
 public class MyButton extends javafx.scene.control.Button {
 
     private boolean activated;
@@ -24,12 +26,16 @@ public class MyButton extends javafx.scene.control.Button {
     }
 
     public void setActivated() {
-        this.activated = true;
-        setStyle("-fx-background-color: #586161");
+        Platform.runLater(() -> {
+            this.activated = true;
+            setStyle("-fx-background-color: #586161");
+        });
     }
 
     public void setDeactivated() {
-        this.activated = false;
-        setStyle("-fx-background-color: #ffff");
+        Platform.runLater(() -> {
+            this.activated = false;
+            setStyle("-fx-background-color: #ffff");
+        });
     }
 }
