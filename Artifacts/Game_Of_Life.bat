@@ -1,0 +1,1 @@
+java --module-path "INSERT PATH TO JAVAFX/lib HERE" --add-modules javafx.controls,javafx.fxml -jar "Game Of Life.jar"
